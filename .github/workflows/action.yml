@@ -16,6 +16,8 @@ jobs:
           sudo apt-get purge openjdk*
           sudo apt-get install software-properties-common
           sudo add-apt-repository ppa:ts.sch.gr/ppa
+          sudo debconf-set-selections <<< "oracle-java8-set-default debconf shared/accepted-oracle-license-v1-1 select true"
+          sudo debconf-set-selections <<< "oracle-java8-set-default debconf shared/accepted-oracle-license-v1-1 seen true" 
           sudo apt-get install oracle-java8-installer
           sudo apt-get -y install maven
           sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev libsasl2-dev
