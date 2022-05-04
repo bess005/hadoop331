@@ -15,6 +15,23 @@ jobs:
           sudo lsb_release -a
           sudo apt-get install -y openjdk-8-jdk
           sudo apt-get -y install maven
+          sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev libsasl2-dev
+          sudo curl -L -s -S https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protobuf-java-3.7.1.tar.gz -o protobuf-3.7.1.tar.gz
+          sudo mkdir protobuf-3.7-src
+          sudo tar xzf protobuf-3.7.1.tar.gz --strip-components 1 -C protobuf-3.7-src && cd protobuf-3.7-src
+          ./configure
+          make -j$(nproc)
+          sudo make install
+          sudo apt-get -y install isal
+          sudo apt-get -y install bzip2 libbz2-dev
+          sudo apt-get -y install fuse libfuse-dev
+          sudo apt-get -y install libzstd-dev
+          sudo apt-get -y install zstd
+          sudo apt-get -y install libzstd1
+          sudo apt-get install -y libpmem1 librpmem1 libpmemblk1 libpmemlog1 libpmemobj1 libpmempool1
+          sudo apt-get install -y libpmem-dev librpmem-dev libpmemblk-dev libpmemlog-dev libpmemobj-dev libpmempool-dev libpmempool-dev
+          sudo apt-get install -y libpmem1-debug librpmem1-debug libpmemblk1-debug libpmemlog1-debug libpmemobj1-debug libpmempool1-debug
+          
           sudo mvn package -Pdist,native -DskipTests -Dtar -Dmaven.javadoc.skip=true
           
           
