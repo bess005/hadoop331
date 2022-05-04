@@ -6,3 +6,10 @@ jobs:
     steps:
       - run: 
           sudo lsb_release -a
+          sudo apt-get install -y openjdk-8-jdk
+          sudo export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+          sudo apt-get -y install maven
+          sudo mvn package -Pdist,native -DskipTests -Dtar
+          
+          
+          
