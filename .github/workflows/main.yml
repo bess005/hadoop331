@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Initialization environment
+        env:
+          JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
         run: |
           sudo lsb_release -a
           sudo apt-get install -y openjdk-8-jdk
