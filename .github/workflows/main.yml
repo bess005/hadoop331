@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: apache/hadoop@3.3.1
+      - uses: apache/hadoop@branch-3.3.1
       - name: Initialization environment
         env:
           JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
