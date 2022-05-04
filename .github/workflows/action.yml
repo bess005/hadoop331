@@ -10,10 +10,15 @@ jobs:
         uses: actions/checkout@v2
       - name: Initialization environment
         env:
-          JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
+          JAVA_HOME: /usr/lib/jvm/java-8-oracle
         run: |
           sudo lsb_release -a
-          sudo apt-get install -y openjdk-8-jdk
+          sudo apt-get purge openjdk*
+          sudo apt-get install software-properties-common
+          sudo add-apt-repository ppa:webupd8team/java
+          sudo add-apt-repository ppa:ts.sch.gr/ppa
+          sudo apt-get update
+          sudo apt-get install oracle-java8-installer
           sudo apt-get -y install maven
           sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev libsasl2-dev
           sudo curl -L -s -S https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protobuf-java-3.7.1.tar.gz -o protobuf-3.7.1.tar.gz
