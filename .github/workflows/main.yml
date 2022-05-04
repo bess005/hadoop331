@@ -1,5 +1,7 @@
 name: Hadoop3
-on: push
+on: 
+  push:
+    branches: [ trunk ]
 jobs:
   build:
     runs-on: ubuntu-latest
