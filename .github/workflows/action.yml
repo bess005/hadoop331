@@ -15,7 +15,7 @@ jobs:
           sudo lsb_release -a
           sudo apt-get install -y openjdk-8-jdk
           sudo apt-get -y install maven
-          sudo mvn package -Pdist,native -DskipTests -Dtar
+          sudo mvn package -Pdist,native -DskipTests -Dtar -Dmaven.javadoc.skip=true
           
           
           
