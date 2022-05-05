@@ -16,19 +16,7 @@ jobs:
         run:
           sudo apt-get -y install openjdk-8-jdk
           sudo apt-get -y install maven
-          sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev libsasl2-dev
-          sudo apt-get -y install nodejs
-          sudo apt-get -y install npm
-          sudo apt-get -y install yarn
-          sudo apt-get -y install isal
-          sudo apt-get -y install bzip2 libbz2-dev
-          sudo apt-get -y install fuse libfuse-dev
-          sudo apt-get -y install libzstd-dev
-          sudo apt-get -y install zstd
-          sudo apt-get -y install libzstd1
-          sudo apt-get -y install libpmem1 librpmem1 libpmemblk1 libpmemlog1 libpmemobj1 libpmempool1
-          sudo apt-get -y installlibpmem-dev librpmem-dev libpmemblk-dev libpmemlog-dev libpmemobj-dev libpmempool-dev libpmempool-dev
-          sudo apt-get -y install libpmem1-debug librpmem1-debug libpmemblk1-debug libpmemlog1-debug libpmemobj1-debug libpmempool1-debug
+          
           sudo curl https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-all-3.20.1.tar.gz
           sudo mkdir protobuf-3.20-src
           sudo mv protobuf-all-3.20.1.tar.gz protobuf-3.20-src
