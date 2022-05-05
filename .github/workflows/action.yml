@@ -32,7 +32,8 @@ jobs:
           sudo curl https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-all-3.20.1.tar.gz
           sudo mkdir protobuf-3.20-src
           sudo mv protobuf-all-3.20.1.tar.gz protobuf-3.20-src
-          sudo tar xzf protobuf-3.20-src/protobuf-all-3.20.1.tar.gz && cd protobuf-3.20-src
+          cd protobuf-3.20-src
+          sudo tar xzf protobuf-all-3.20.1.tar.gz
           sudo ./configure
           sudo make -j$(nproc)
           sudo make install
