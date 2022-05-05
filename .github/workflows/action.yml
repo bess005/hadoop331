@@ -6,8 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Initialization environment
         env:
           JAVA_HOME: /usr/lib/jvm/java-8-oracle
