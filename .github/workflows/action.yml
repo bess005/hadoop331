@@ -14,5 +14,6 @@ jobs:
         env:
           JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
         run:
-          sudo apt-get -y install openjdk-8-jdk
-          sudo apt-get -y install maven
+          sudo apt -y install openjdk-8-jdk
+          sudo apt -y install maven
+          
