@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@3.3.1
+        uses: actions/checkout@V3
+        with:
+          ref: Archertsai05/hadoop331
       - name: Initialization environment
         env:
           JAVA_HOME: /usr/lib/jvm/java-8-oracle
