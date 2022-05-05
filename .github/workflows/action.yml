@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: branch-3.3.1
-      - name: Initialization environment
+      - name: build hadoop
         env:
           JAVA_HOME: /usr/lib/jvm/java-8-oracle
         run: |
@@ -38,6 +38,5 @@ jobs:
           sudo apt-get install -y libpmem1-debug librpmem1-debug libpmemblk1-debug libpmemlog1-debug libpmemobj1-debug libpmempool1-debug
           cd /home/runner/work/hadoop331/hadoop331/
           sudo mvn package -Pdist,native -DskipTests -Dtar -Dmaven.javadoc.skip=true
-          
-          
-          
+      - name: Download all workflow run artifacts
+        run: actions/download-artifact@v3
