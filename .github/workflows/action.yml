@@ -26,7 +26,3 @@ jobs:
           sudo make install
           cd /home/runner/work/hadoop331/hadoop331/
           mvn package -DskipTests -Pdist,native -Dtar -Dbundle.snappy -Drequire.snappy -Dbundle.pmdk -Drequire.pmdk -Dbundle.lz4 -Drequire.lz4
-      - name: Checkout tools repo
-        uses: actions/checkout@v3
-        with:
-          ref: mybuild-branch1
