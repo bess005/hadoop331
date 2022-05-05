@@ -13,7 +13,7 @@ jobs:
       - name: build hadoop
         env:
           JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
-        run:
+        run: |
           sudo apt -y install openjdk-8-jdk
           sudo apt -y install maven
           
