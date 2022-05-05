@@ -24,6 +24,9 @@ jobs:
           sudo ./configure
           sudo make -j$(nproc)
           sudo make install
+          sudo apt-get -y install nodejs
+          sudo apt-get -y install npm
+          sudo apt-get -y install yarn
           sudo apt-get -y install isal
           sudo apt-get -y install bzip2 libbz2-dev
           sudo apt-get -y install fuse libfuse-dev
