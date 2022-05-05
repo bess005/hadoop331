@@ -13,17 +13,10 @@ jobs:
       - name: build hadoop
         env:
           JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
-        run: |
-          sudo lsb_release -a
+        run:
           sudo apt-get -y install openjdk-8-jdk
           sudo apt-get -y install maven
           sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev libsasl2-dev
-          sudo curl -L -s -S https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protobuf-java-3.7.1.tar.gz -o protobuf-3.7.1.tar.gz
-          sudo mkdir protobuf-3.7-src
-          sudo tar xzf protobuf-3.7.1.tar.gz --strip-components 1 -C protobuf-3.7-src && cd protobuf-3.7-src
-          sudo ./configure
-          sudo make -j$(nproc)
-          sudo make install
           sudo apt-get -y install nodejs
           sudo apt-get -y install npm
           sudo apt-get -y install yarn
@@ -36,9 +29,15 @@ jobs:
           sudo apt-get install -y libpmem1 librpmem1 libpmemblk1 libpmemlog1 libpmemobj1 libpmempool1
           sudo apt-get install -y libpmem-dev librpmem-dev libpmemblk-dev libpmemlog-dev libpmemobj-dev libpmempool-dev libpmempool-dev
           sudo apt-get install -y libpmem1-debug librpmem1-debug libpmemblk1-debug libpmemlog1-debug libpmemobj1-debug libpmempool1-debug
+          curl -L -s -S https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-all-3.20.1.tar.gz -o protobuf-3.20.1.tar.gz
+          mkdir protobuf-3.20-src
+          tar xzf protobuf-3.20.1.tar.gz --strip-components 1 -C protobuf-3.20-src && cd protobuf-3.20-src
+          ./configure
+          make -j$(nproc)
+          make install
           cd /home/runner/work/hadoop331/hadoop331/
-          sudo mvn package -Pdist,native -DskipTests -Dtar -Dmaven.javadoc.skip=true
+          mvn package -Pdist,native -DskipTests -Dtar -Dmaven.javadoc.skip=true
       - name: Checkout tools repo
         uses: actions/checkout@v3
         with:
-          ref: my-branch
+          ref: mybuild-branch1
