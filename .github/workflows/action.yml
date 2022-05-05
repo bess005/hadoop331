@@ -16,13 +16,3 @@ jobs:
         run:
           sudo apt-get -y install openjdk-8-jdk
           sudo apt-get -y install maven
-          
-          sudo curl https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-all-3.20.1.tar.gz
-          sudo mkdir protobuf-3.20-src
-          sudo mv protobuf-all-3.20.1.tar.gz protobuf-3.20-src
-          cd protobuf-3.20-src
-          sudo tar xzf protobuf-all-3.20.1.tar.gz
-          sudo ./configure
-          sudo make install
-          cd /home/runner/work/hadoop331/hadoop331/
-          mvn package -DskipTests -Pdist,native -Dtar -Dbundle.snappy -Drequire.snappy -Dbundle.pmdk -Drequire.pmdk -Dbundle.lz4 -Drequire.lz4
