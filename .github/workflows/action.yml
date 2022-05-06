@@ -38,7 +38,8 @@ jobs:
           sudo apt-get install -y libpmem1-debug librpmem1-debug libpmemblk1-debug libpmemlog1-debug libpmemobj1-debug libpmempool1-debug
           cd /home/runner/work/hadoop331/hadoop331/
           mvn clean package -DskipTests -Pdist,native -Dtar -Dmaven.javadoc.skip=true
-          find . -name '*.tar.gz'
+          mkdir staging
+          find . -name '*.tar.gz' | xargs -i cp {} staging
       - name: upload-artifact
         uses: actions/upload-artifact@v3
         with:
