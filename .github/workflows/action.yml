@@ -14,9 +14,16 @@ jobs:
         env:
           JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
         run: |
-          sudo apt -y install openjdk-8-jdk
-          sudo apt -y install maven
+          sudo lsb_release -a
+          sudo apt-get -y install openjdk-8-jdk
+          sudo apt-get -y install maven
           sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev libsasl2-dev
+          sudo curl -L -s -S https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protobuf-java-3.7.1.tar.gz -o protobuf-3.7.1.tar.gz
+          sudo mkdir protobuf-3.7-src
+          sudo tar xzf protobuf-3.7.1.tar.gz --strip-components 1 -C protobuf-3.7-src && cd protobuf-3.7-src
+          sudo ./configure
+          sudo make -j$(nproc)
+          sudo make install
           sudo apt-get -y install nodejs
           sudo apt-get -y install npm
           sudo apt-get -y install yarn
@@ -29,15 +36,10 @@ jobs:
           sudo apt-get install -y libpmem1 librpmem1 libpmemblk1 libpmemlog1 libpmemobj1 libpmempool1
           sudo apt-get install -y libpmem-dev librpmem-dev libpmemblk-dev libpmemlog-dev libpmemobj-dev libpmempool-dev libpmempool-dev
           sudo apt-get install -y libpmem1-debug librpmem1-debug libpmemblk1-debug libpmemlog1-debug libpmemobj1-debug libpmempool1-debug
-          sudo curl -L -s -S https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protobuf-java-3.7.1.tar.gz -o protobuf-3.7.1.tar.gz
-          sudo mkdir protobuf-3.7-src
-          sudo tar xzf protobuf-3.7.1.tar.gz --strip-components 1 -C protobuf-3.7-src && cd protobuf-3.7-src
-          sudo ./configure
-          sudo make -j$(nproc)
-          sudo make install
           cd /home/runner/work/hadoop331/hadoop331/
-          mvn package -DskipTests -Pdist,native -Dtar -Dbundle.snappy -Drequire.snappy -Dsnappy.lib=/usr/lib/x86_64-linux-gnu -Dbundle.pmdk -Drequire.pmdk -Dbundle.lz4 -Drequire.lz4 -Dmaven.javadoc.skip=true
-      - name: Checkout tools repo
-        uses: actions/checkout@v3
+          mvn package -DskipTests -Pdist,native -Dtar -Dbundle.snappy -Drequire.snappy -Dsnappy.lib=/usr/lib/x86_64-linux-gnu -Dbundle.pmdk -Drequire.pmdk -Dbundle.lz4 -Drequire.lz4 -Dmaven.javadoc.skip=true     
+       - name: upload-artifact
+        uses: actions/upload-artifact@v3
         with:
-          ref: mybuild-branch1
+          name: Package
+          path: staging
