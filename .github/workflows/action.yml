@@ -38,7 +38,7 @@ jobs:
           sudo apt-get install -y libpmem1-debug librpmem1-debug libpmemblk1-debug libpmemlog1-debug libpmemobj1-debug libpmempool1-debug
           cd /home/runner/work/hadoop331/hadoop331/
           mvn package -DskipTests -Pdist,native -Dtar -Dbundle.snappy -Drequire.snappy -Dsnappy.lib=/usr/lib/x86_64-linux-gnu -Dbundle.pmdk -Drequire.pmdk -Dbundle.lz4 -Drequire.lz4 -Dmaven.javadoc.skip=true     
-       - name: upload-artifact
+      - name: upload-artifact
         uses: actions/upload-artifact@v3
         with:
           name: Package
