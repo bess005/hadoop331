@@ -41,7 +41,8 @@ jobs:
           cd /home/runner/work/hadoop331/hadoop331/
           #mvn clean package -DskipTests -Pdist,native -Dtar -Drequire.snappy -Dsnappy.lib=/usr/lib/x86_64-linux-gnu -Drequire.zstd -Drequire.openssl -Drequire.isal -Drequire.pmdk dependency-check:aggregate -Dmaven.javadoc.skip=true
           #mvn clean package -DskipTests -Pdist,native -Dtar -Dmaven.javadoc.skip=true
-          mvn clean package -DskipTests -Pdist,native -Dtar -Dmaven.javadoc.skip=true -Drequire.pmdk -Dpmdk.lib -Dbundle.pmdk -Drequire.isal -Disal.lib -Dbundle.isal -Drequire.openssl -Dopenssl.lib -Dbundle.openssl
+          #mvn clean package -DskipTests -Pdist,native -Dtar -Dmaven.javadoc.skip=true -Drequire.pmdk -Dpmdk.lib -Dbundle.pmdk -Drequire.isal -Disal.lib -Dbundle.isal -Drequire.openssl -Dopenssl.lib -Dbundle.openssl
+          mvn clean package -DskipTests -Pdist,native -Dtar -Dmaven.javadoc.skip=true -Drequire.pmdk -Dpmdk.lib -Dbundle.pmdk
           mkdir staging
           #find . -name '*.tar.gz' | xargs -i cp {} staging
           cp ./hadoop-dist/target/hadoop-3.3.1.tar.gz staging
