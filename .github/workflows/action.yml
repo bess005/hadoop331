@@ -1,4 +1,4 @@
-name: Hadoop3
+name: hadoop3
 on: 
   push:
     branches: [ trunk ]
